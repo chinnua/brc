@@ -27,8 +27,8 @@ function calculate(L, B, H, Unit, Ply, GSM) {
 
     flute = Math.round((Ply - 1) / 2);
     totalGSM = (Ply * GSM) + (0.4 * GSM) * flute;
-    boardLength = B + H + 1;
-    boardBreadth = L + B + 2;
+    boardLength = parseFloat(B) + parseFloat(H) + 1;
+    boardBreadth = parseFloat(L) + parseFloat(B) + 2;
     weight = Math.round(((boardLength * boardBreadth * totalGSM) / 1550) * 2);
 
     return {
