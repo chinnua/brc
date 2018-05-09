@@ -7,15 +7,15 @@ function calculate(L, B, H, Unit, Ply, GSM) {
 
     switch (Unit) {
         case "mm":
-            L = L * 25.4;
-            B = B * 25.4;
-            H = H * 25.4;
+            L = L / 25.4;
+            B = B / 25.4;
+            H = H / 25.4;
             break;
 
         case "cm":
-            L = L * 2.54;
-            B = B * 2.54;
-            H = H * 2.54;
+            L = L / 2.54;
+            B = B / 2.54;
+            H = H / 2.54;
             break;
 
         default:
@@ -34,8 +34,8 @@ function calculate(L, B, H, Unit, Ply, GSM) {
     return {
         flute: flute,
         totalGSM: totalGSM,
-        boardLength: boardLength,
-        boardBreadth: boardBreadth,
+        boardLength: boardLength.toFixed(2),
+        boardBreadth: boardBreadth.toFixed(2),
         weight: weight
     };
 }

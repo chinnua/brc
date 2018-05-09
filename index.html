@@ -102,46 +102,60 @@
                     <span class="mdl-textfield__error">Input is not a number!</span>
                 </div>
                 <!-- Accent-colored raised button with ripple -->
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent full-width" onclick="doCalculate();">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="doCalculate();">
                     Calculate
                 </button>
-                <div style="display: none" id="result">
-                    <ul class="mdl-list">
-                        <li class="mdl-list__item">
-                            <span class="mdl-list__item-primary-content">
-                                Board Size:&nbsp;
-                                <span id="boardSize"></span>
-                                <span>&nbsp;inches</span>
-                            </span>
-                        </li>
-                        <li class="mdl-list__item">
-                            <span class="mdl-list__item-primary-content">
-                                Box Weight:&nbsp;
-                                <span id="boxWeight"></span>
-                                <span>&nbsp;grams</span>
-                            </span>
-                        </li>
-                    </ul>
+                <div id="toast" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
                 </div>
-            </div>
+
+                <div class="demo-card-wide mdl-card mdl-shadow--4dp full-width" style="margin-top: 20px; border: 1px solid #3E4EB8; display: none"
+                    id="result">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Results</h2>
+                    </div>
+                    <div>
+                        <h5>
+                            Board Size:&nbsp;
+                            <span id="boardSize"></span>
+                            <span>&nbsp;inches</span>
+                        </h5>
+                        <h5>
+                            Box Weight:&nbsp;
+                            <span id="boxWeight"></span>
+                            <span>&nbsp;grams</span>
+                        </h5>
+                    </div>
+                </div>
         </main>
-    </div>
-    <script>
-        function doCalculate() {
-            debugger
-            var length = $('#length').val();
-            var breadth = $('#breadth').val();
-            var height = $('#height').val();
-            var unit = $('input[name="unit"]').val();
-            var ply = $('input[name="ply"]').val();
-            var gsm = $('#gsm').val();
-            var calcData = calculate(length, breadth, height, unit, ply, gsm);
-            $('#boardSize').html(calcData.boardLength + ' x ' + calcData.boardBreadth);
-            $('#boxWeight').html(calcData.weight);
-            $('#result').css('display', 'block');
-            //alert(calcData.weight);
-        }
-    </script>
+        </div>
+        <script>
+            function doCalculate() {
+                var length = $('#length').val();
+                var breadth = $('#breadth').val();
+                var height = $('#height').val();
+                var unit = $('input[name="unit"]').val();
+                var ply = $('input[name="ply"]').val();
+                var gsm = $('#gsm').val();
+                if (length == "" || breadth == "" || height == "" || gsm == "") {
+                    showToast('Please fill all the fields!');
+                } else {
+                    var calcData = calculate(length, breadth, height, unit, ply, gsm);
+                    $('#boardSize').html(calcData.boardLength + ' x ' + calcData.boardBreadth);
+                    $('#boxWeight').html(calcData.weight);
+                    $('#result').css('display', 'block');
+                }
+            };
+
+            function showToast(message) {
+                var snackbarContainer = document.querySelector('#toast');
+                var data = {
+                    message: message
+                };
+                snackbarContainer.MaterialSnackbar.showSnackbar(data);
+            };
+        </script>
 </body>
 
 </html>
