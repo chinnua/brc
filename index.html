@@ -2,11 +2,10 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -27,13 +26,10 @@
 </head>
 
 <body style="font-family:'Roboto','Helvetica','Arial',sans-serif!important; text-align: center">
-    <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
-                <!-- Title -->
                 <span class="mdl-layout-title">B R C</span>
-                <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
                 <!-- <nav class="mdl-navigation mdl-layout--large-screen-only">
@@ -55,7 +51,6 @@
         </div>
         <main class="mdl-layout__content">
             <div class="page-content" style="margin: 10px;">
-                <!-- Your content goes here -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
                     <input class="mdl-textfield__input" type="text" pattern="[0-9]*(\.[0-9]+)?" id="length">
                     <label class="mdl-textfield__label" for="length">Length</label>
@@ -101,7 +96,6 @@
                     <label class="mdl-textfield__label" for="gsm">GSM</label>
                     <span class="mdl-textfield__error">Input is not a number!</span>
                 </div>
-                <!-- Accent-colored raised button with ripple -->
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="doCalculate();">
                     Calculate
                 </button>
@@ -116,16 +110,16 @@
                         <h2 class="mdl-card__title-text">Results</h2>
                     </div>
                     <div>
-                        <h5>
+                        <h6>
                             Board Size:&nbsp;
                             <span id="boardSize"></span>
                             <span>&nbsp;inches</span>
-                        </h5>
-                        <h5>
+                        </h6>
+                        <h6>
                             Box Weight:&nbsp;
                             <span id="boxWeight"></span>
                             <span>&nbsp;grams</span>
-                        </h5>
+                        </h6>
                     </div>
                 </div>
         </main>
