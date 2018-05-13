@@ -29,7 +29,7 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">B R C</span>
+                <span class="mdl-layout-title">Box Rate Calc</span>
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
                 <!-- <nav class="mdl-navigation mdl-layout--large-screen-only">
@@ -41,7 +41,7 @@
             </div>
         </header>
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">B R C</span>
+            <span class="mdl-layout-title">Box Rate Calc</span>
             <!-- <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="">Link</a>
                 <a class="mdl-navigation__link" href="">Link</a>
@@ -52,17 +52,17 @@
         <main class="mdl-layout__content">
             <div class="page-content" style="margin: 10px;">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
-                    <input class="mdl-textfield__input" type="text" pattern="[0-9]*(\.[0-9]+)?" id="length">
+                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*(\.[0-9]+)?" id="length">
                     <label class="mdl-textfield__label" for="length">Length</label>
                     <span class="mdl-textfield__error">Input is not a number!</span>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
-                    <input class="mdl-textfield__input" type="text" pattern="[0-9]*(\.[0-9]+)?" id="breadth">
+                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*(\.[0-9]+)?" id="breadth">
                     <label class="mdl-textfield__label" for="breadth">Breadth</label>
                     <span class="mdl-textfield__error">Input is not a number!</span>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
-                    <input class="mdl-textfield__input" type="text" pattern="[0-9]*(\.[0-9]+)?" id="height">
+                    <input class="mdl-textfield__input" type="number" pattern="[0-9]*(\.[0-9]+)?" id="height">
                     <label class="mdl-textfield__label" for="height">Height</label>
                     <span class="mdl-textfield__error">Input is not a number!</span>
                 </div>
@@ -92,8 +92,8 @@
                     </ul>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
-                    <input class="mdl-textfield__input" type="text" pattern="[0-9]+" id="gsm">
-                    <label class="mdl-textfield__label" for="gsm">GSM</label>
+                    <input class="mdl-textfield__input" type="number" pattern="[0-9]+(\/)?([0-9]+)?" id="gsm">
+                    <label class="mdl-textfield__label" for="gsm">GSM Base/Others</label>
                     <span class="mdl-textfield__error">Input is not a number!</span>
                 </div>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="doCalculate();">
