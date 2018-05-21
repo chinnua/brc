@@ -92,8 +92,13 @@
                     </ul>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
-                    <input class="mdl-textfield__input" type="number" pattern="[0-9]+(\/)?([0-9]+)?" id="gsm">
-                    <label class="mdl-textfield__label" for="gsm">GSM Base/Others</label>
+                    <input class="mdl-textfield__input" type="number" pattern="[0-9]+" id="gsm">
+                    <label class="mdl-textfield__label" for="gsm">GSM Base</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+                    <input class="mdl-textfield__input" type="number" pattern="[0-9]+" id="gsmOthers">
+                    <label class="mdl-textfield__label" for="gsmOthers">GSM Others</label>
                     <span class="mdl-textfield__error">Input is not a number!</span>
                 </div>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="doCalculate();">
@@ -104,7 +109,26 @@
                     <button class="mdl-snackbar__action" type="button"></button>
                 </div>
 
-                <div class="demo-card-wide mdl-card mdl-shadow--4dp full-width" style="margin-top: 20px; border: 1px solid #3E4EB8; display: none"
+                <dialog class="mdl-dialog">
+                    <h4 class="mdl-dialog__title">Result</h4>
+                    <div class="mdl-dialog__content">
+                        <h6>
+                            Board Size:&nbsp;
+                            <span id="boardSize"></span>
+                            <span>&nbsp;inches</span>
+                        </h6>
+                        <h6>
+                            Box Weight:&nbsp;
+                            <span id="boxWeight"></span>
+                            <span>&nbsp;grams</span>
+                        </h6>
+                    </div>
+                    <div class="mdl-dialog__actions">
+                        <button type="button" class="mdl-button close">OK</button>
+                    </div>
+                </dialog>
+
+                <!-- <div class="demo-card-wide mdl-card mdl-shadow--4dp full-width" style="margin-top: 20px; border: 1px solid #3E4EB8; display: none"
                     id="result">
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Results</h2>
@@ -121,7 +145,7 @@
                             <span>&nbsp;grams</span>
                         </h6>
                     </div>
-                </div>
+                </div> -->
         </main>
         </div>
         <script>
@@ -132,13 +156,23 @@
                 var unit = $('input[name="unit"]').val();
                 var ply = $('input[name="ply"]').val();
                 var gsm = $('#gsm').val();
+                var gsmOthers = $('#gsmOthers').val();
                 if (length == "" || breadth == "" || height == "" || gsm == "") {
                     showToast('Please fill all the fields!');
                 } else {
-                    var calcData = calculate(length, breadth, height, unit, ply, gsm);
+                    if (gsmOthers == "") {
+                        gsmOthers = gsm;
+                    }
+                    var calcData = calculate(length, breadth, height, unit, ply, gsm, gsmOthers);
+                    var dialog = document.querySelector('dialog');
+                    dialog.querySelector('.close').addEventListener('click', function () {
+                        dialog.close();
+                    });
                     $('#boardSize').html(calcData.boardLength + ' x ' + calcData.boardBreadth);
                     $('#boxWeight').html(calcData.weight);
-                    $('#result').css('display', 'block');
+                    dialog.showModal();
+
+                    //$('#result').css('display', 'block');
                 }
             };
 

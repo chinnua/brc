@@ -1,4 +1,4 @@
-function calculate(L, B, H, Unit, Ply, GSM) {
+function calculate(L, B, H, Unit, Ply, GSM, OthersGSM) {
     var flute;
     var totalGSM;
     var boardLength;
@@ -25,18 +25,9 @@ function calculate(L, B, H, Unit, Ply, GSM) {
             H = H;
             break;
     }
-
-    if (GSM.indexOf('/') > 0) {
-        var splits = GSM.split('/');
-        GSM = splits[1];
-        baseGSM = splits[0];
-    }
-    else {
-        baseGSM = GSM;
-    }
-
+    debugger
     flute = Math.round((parseInt(Ply) - 1) / 2);
-    totalGSM = (parseInt(Ply - 1) * parseInt(GSM)) + ((0.4 * parseInt(GSM)) * flute) + parseInt(baseGSM);
+    totalGSM = (parseInt(Ply - 1) * parseInt(OthersGSM)) + ((0.4 * parseInt(OthersGSM)) * flute) + parseInt(GSM);
     boardLength = parseFloat(B) + parseFloat(H) + 1;
     boardBreadth = parseFloat(L) + parseFloat(B) + 2;
     weight = Math.round(((boardLength * boardBreadth * totalGSM) / 1550) * 2);
